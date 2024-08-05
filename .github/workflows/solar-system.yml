@@ -8,19 +8,28 @@ on:
       - 'feature/*'
     
 jobs:
-    slack-notification:
-        name: Slack Notification
-        runs-on: ubuntu-latest
-        steps:
-        - name: Slack Notification
-          uses: rtCamp/action-slack-notify@v2
-          env:
-            SLACK_CHANNEL: general
-            SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
-            SLACK_ICON: https://github.com/rtCamp.png?size=48
-            SLACK_MESSAGE: 'Post Content :rocket:'
-            SLACK_TITLE: Post Title
-            SLACK_USERNAME: kkokkula
-            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+    self-hosted-runner:
+      name: Self Hosted Runner
+      #runs-on: [self-hosted,prod,]
+      runs-on: ubuntu-latest
+      steps:
+        - name: echo hello world
+          run: | 
+            echo "Hello World"       
+            echo  ${{ job.status}}
+    # slack-notification:
+    #     name: Slack Notification
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #     - name: Slack Notification
+    #       uses: rtCamp/action-slack-notify@v2
+    #       env:
+    #         SLACK_CHANNEL: general
+    #         SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+    #         SLACK_ICON: https://github.com/rtCamp.png?size=48
+    #         SLACK_MESSAGE: 'Post Content :rocket:'
+    #         SLACK_TITLE: Post Title
+    #         SLACK_USERNAME: kkokkula
+    #         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
     
